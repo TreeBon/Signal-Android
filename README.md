@@ -1,4 +1,4 @@
-# Signal Android 
+# Signal Android with google-translator
 
 Signal is a messaging app for simple private communication with friends.
 
