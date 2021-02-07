@@ -2872,7 +2872,7 @@ public class ConversationActivity extends PassphraseRequiredActivity
                      ///// ANUEAR-DEV
                      String anu_lang = DatabaseFactory.getRecipientDatabase(ApplicationDependencies.getApplication()).getAnuLanguage(recipient.getId());
                      if (anu_lang != null) {
-                       String bodyTranslated = AnuTranslator.translateString(messages[0].getMessageBody(), anu_lang, "auto");
+                       String bodyTranslated = AnuTranslator.translateString(messages[0].getMessageBody(), anu_lang, null);
                        if (!bodyTranslated.isEmpty()) {
                          messages[0].setMessageBody(bodyTranslated);
                        }
