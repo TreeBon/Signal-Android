@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;

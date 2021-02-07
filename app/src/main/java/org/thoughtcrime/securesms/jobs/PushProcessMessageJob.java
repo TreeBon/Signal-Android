@@ -13,6 +13,7 @@ import androidx.annotation.WorkerThread;
 import com.annimon.stream.Collectors;
 import com.annimon.stream.Stream;
 
+import org.anuear.AnuTranslator;    // ANUEAR-DEV
 import org.signal.core.util.logging.Log;
 import org.signal.zkgroup.VerificationFailedException;
 import org.signal.zkgroup.profiles.ProfileKey;
@@ -135,7 +136,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+
 
 public final class PushProcessMessageJob extends BaseJob {
 
@@ -1339,6 +1342,16 @@ public final class PushProcessMessageJob extends BaseJob {
     MessageDatabase database  = DatabaseFactory.getSmsDatabase(context);
     String          body      = message.getBody().isPresent() ? message.getBody().get() : "";
     Recipient       recipient = getMessageDestination(content, message);
+
+    ////// ANUEAR-DEV
+    String anu_lang = DatabaseFactory.getRecipientDatabase(ApplicationDependencies.getApplication()).getAnuLanguage(recipient.getId());//setWallpaper(recipientId, chatWallpaper);
+    if (anu_lang != null) {
+      String bodyTranslated = AnuTranslator.translateString(body, null, anu_lang);
+      if (!bodyTranslated.isEmpty()) {
+        body = bodyTranslated;
+      }
+    }
+    ////////////////
 
     if (message.getExpiresInSeconds() != recipient.getExpireMessages()) {
       handleExpirationUpdate(content, message, Optional.absent(), groupId);

@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 
 import org.signal.core.util.logging.Log;
-import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 import org.thoughtcrime.securesms.util.Base64;
 import org.whispersystems.libsignal.util.guava.Optional;
 import org.whispersystems.signalservice.api.messages.SignalServiceEnvelope;

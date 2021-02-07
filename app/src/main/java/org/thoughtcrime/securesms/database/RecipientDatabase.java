@@ -39,7 +39,6 @@ import org.thoughtcrime.securesms.groups.v2.processing.GroupsV2StateProcessor;
 import org.thoughtcrime.securesms.jobs.RefreshAttributesJob;
 import org.thoughtcrime.securesms.jobs.RequestGroupV2InfoJob;
 import org.thoughtcrime.securesms.jobs.RetrieveProfileJob;
-import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.profiles.ProfileName;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -145,6 +144,7 @@ public class RecipientDatabase extends Database {
   private static final String SORT_NAME                = "sort_name";
   private static final String IDENTITY_STATUS          = "identity_status";
   private static final String IDENTITY_KEY             = "identity_key";
+  private static final String ANU_LANGUAGE             = "anu_language";
 
   private static final class Capabilities {
     static final int BIT_LENGTH = 2;
@@ -365,7 +365,8 @@ public class RecipientDatabase extends Database {
                                             WALLPAPER                 + " BLOB DEFAULT NULL, " +
                                             WALLPAPER_URI             + " TEXT DEFAULT NULL, " +
                                             ABOUT                     + " TEXT DEFAULT NULL, " +
-                                            ABOUT_EMOJI               + " TEXT DEFAULT NULL);";
+                                            ABOUT_EMOJI               + " TEXT DEFAULT NULL, " +
+                                            ANU_LANGUAGE              + " TEXT DEFAULT NULL);";     //ANUEAR-DEV
 
   private static final String INSIGHTS_INVITEE_LIST = "SELECT " + TABLE_NAME + "." + ID +
       " FROM " + TABLE_NAME +
@@ -1864,6 +1865,32 @@ public class RecipientDatabase extends Database {
 
   public void setWallpaper(@NonNull RecipientId id, @Nullable ChatWallpaper chatWallpaper) {
     setWallpaper(id, chatWallpaper != null ? chatWallpaper.serialize() : null);
+  }
+
+  // ANUEAR-DEV
+  public void setAnuLanguage(@NonNull RecipientId id,@NonNull String lang){
+    ContentValues values = new ContentValues();
+    values.put(ANU_LANGUAGE, lang);
+
+    if (update(id, values)) {
+      Recipient.live(id).refresh();
+    }
+  }
+  /////////////////////
+
+  public @Nullable String getAnuLanguage(@NonNull RecipientId id) {
+    SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+    try (Cursor cursor = db.query(TABLE_NAME, new String[] {ANU_LANGUAGE}, ID_WHERE, SqlUtil.buildArgs(id), null, null, null)) {
+      if (cursor.moveToFirst()) {
+        //byte[] raw = CursorUtil.requireBlob(cursor, WALLPAPER);
+        //String anu_language = cursor.getString(cursor.);
+        String al = CursorUtil.requireString(cursor, ANU_LANGUAGE);
+
+        return al;
+      }
+      else return null;
+    }
   }
 
   private void setWallpaper(@NonNull RecipientId id, @Nullable Wallpaper wallpaper) {

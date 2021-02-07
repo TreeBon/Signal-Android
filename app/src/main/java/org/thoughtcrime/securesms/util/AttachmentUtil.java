@@ -2,8 +2,6 @@ package org.thoughtcrime.securesms.util;
 
 
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.text.TextUtils;
 
 import androidx.annotation.NonNull;

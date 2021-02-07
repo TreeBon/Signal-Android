@@ -1,10 +1,6 @@
 package org.thoughtcrime.securesms.components;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
-import android.content.Context;
-
-import androidx.annotation.NonNull;
 
 import org.thoughtcrime.securesms.dependencies.ApplicationDependencies;
 import org.thoughtcrime.securesms.jobs.TypingSendJob;

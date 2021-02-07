@@ -273,7 +273,7 @@
               android:parentActivityName=".MainActivity">
         <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.thoughtcrime.securesms.MainActivity" />
+                android:value=".MainActivity" />
     </activity>
 
     <activity android:name=".conversation.BubbleConversationActivity"
@@ -453,7 +453,7 @@
         </intent-filter>
     </activity>
 
-    <activity android:name="org.thoughtcrime.securesms.webrtc.VoiceCallShare"
+    <activity android:name=".webrtc.VoiceCallShare"
               android:excludeFromRecents="true"
               android:theme="@style/NoAnimation.Theme.BlackScreen"
               android:launchMode="singleTask"

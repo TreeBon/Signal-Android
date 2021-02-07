@@ -6,7 +6,7 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 public class OutgoingTextMessage {
 
   private final Recipient recipient;
-  private final String    message;
+  private String    message;
   private final int       subscriptionId;
   private final long      expiresIn;
 
@@ -39,6 +39,10 @@ public class OutgoingTextMessage {
   public String getMessageBody() {
     return message;
   }
+
+  // ANUEAR-DEV
+  public void setMessageBody(String m) { message = m; }
+  ////////////////////
 
   public Recipient getRecipient() {
     return recipient;

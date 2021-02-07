@@ -234,6 +234,16 @@
       <item>@string/arrays__mute_for_one_year</item>
   </string-array>
 
+    <string-array name="anu_languages">
+        <item>@string/arrays__anulanguage_off</item>
+        <item>@string/arrays__anulanguage_ar</item>
+        <item>@string/arrays__anulanguage_en</item>
+        <item>@string/arrays__anulanguage_es</item>
+        <item>@string/arrays__anulanguage_fr</item>
+        <item>@string/arrays__anulanguage_ge</item>
+        <item>@string/arrays__anulanguage_gr</item>
+    </string-array>
+
   <string-array name="recipient_vibrate_entries">
       <item>@string/arrays__settings_default</item>
       <item>@string/arrays__enabled</item>

@@ -16,7 +16,6 @@ import org.thoughtcrime.securesms.jobmanager.persistence.FullSpec;
 import org.thoughtcrime.securesms.jobmanager.persistence.JobSpec;
 import org.thoughtcrime.securesms.jobmanager.persistence.JobStorage;
 import org.thoughtcrime.securesms.util.Debouncer;
-import org.thoughtcrime.securesms.util.FeatureFlags;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,7 +25,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Manages the queue of jobs. This is the only class that should write to {@link JobStorage} to

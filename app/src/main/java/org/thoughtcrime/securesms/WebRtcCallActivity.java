@@ -27,9 +27,7 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Rational;
-import android.view.View;
 import android.view.Window;
-import android.view.WindowInsetsController;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
@@ -37,8 +35,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.transition.Transition;
-import androidx.transition.TransitionListenerAdapter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -65,7 +61,6 @@ import org.thoughtcrime.securesms.util.EllapsedTimeFormatter;
 import org.thoughtcrime.securesms.util.FullscreenHelper;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.util.WindowUtil;
 import org.whispersystems.libsignal.IdentityKey;
 import org.whispersystems.signalservice.api.messages.calls.HangupMessage;
 import org.whispersystems.signalservice.api.messages.calls.OfferMessage;

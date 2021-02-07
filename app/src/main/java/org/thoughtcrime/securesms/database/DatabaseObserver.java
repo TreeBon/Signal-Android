@@ -1,8 +1,6 @@
 package org.thoughtcrime.securesms.database;
 
 import android.app.Application;
-import android.database.ContentObserver;
-import android.database.Cursor;
 
 import androidx.annotation.NonNull;
 

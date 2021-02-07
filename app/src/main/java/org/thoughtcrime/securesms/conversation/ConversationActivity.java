@@ -290,6 +290,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -299,6 +300,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.thoughtcrime.securesms.TransportOption.Type;
 import static org.thoughtcrime.securesms.database.GroupDatabase.GroupRecord;
 import static org.whispersystems.libsignal.SessionCipher.SESSION_LOCK;
+
+// ANUEAR-DEV
+import org.anuear.AnuLanguageDialog;
+import org.anuear.AnuTranslator;
+/////////////////////
 
 /**
  * Activity for displaying a message thread, as well as
@@ -998,6 +1004,7 @@ public class ConversationActivity extends PassphraseRequiredActivity
     case R.id.menu_expiring_messages_off:
     case R.id.menu_expiring_messages:         handleSelectMessageExpiration();                   return true;
     case R.id.menu_create_bubble:             handleCreateBubble();                              return true;
+      case R.id.menu_anulanguage:             handleAnuLanguage();                               return true;
     case android.R.id.home:                   super.onBackPressed();                             return true;
     }
 
@@ -1146,6 +1153,11 @@ public class ConversationActivity extends PassphraseRequiredActivity
       }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     });
   }
+  // ANUEAR-DEV
+  private void handleAnuLanguage() {
+    AnuLanguageDialog.show(this, recipient.getId());
+  }
+  ///////////////
 
   private void handleConversationSettings() {
     if (isGroupConversation()) {
@@ -1921,7 +1933,6 @@ public class ConversationActivity extends PassphraseRequiredActivity
     mentionsSuggestions      = ViewUtil.findStubById(this, R.id.conversation_mention_suggestions_stub);
     wallpaper                = findViewById(R.id.conversation_wallpaper);
     wallpaperDim             = findViewById(R.id.conversation_wallpaper_dim);
-
     ImageButton quickCameraToggle      = findViewById(R.id.quick_camera_toggle);
     ImageButton inlineAttachmentButton = findViewById(R.id.inline_attachment_button);
 
@@ -2835,7 +2846,7 @@ public class ConversationActivity extends PassphraseRequiredActivity
 
     final long    thread      = this.threadId;
     final Context context     = getApplicationContext();
-    final String  messageBody = getMessage();
+    String  messageBody = getMessage();
 
     OutgoingTextMessage message;
 
@@ -2857,6 +2868,17 @@ public class ConversationActivity extends PassphraseRequiredActivity
                  new AsyncTask<OutgoingTextMessage, Void, Long>() {
                    @Override
                    protected Long doInBackground(OutgoingTextMessage... messages) {
+
+                     ///// ANUEAR-DEV
+                     String anu_lang = DatabaseFactory.getRecipientDatabase(ApplicationDependencies.getApplication()).getAnuLanguage(recipient.getId());
+                     if (anu_lang != null) {
+                       String bodyTranslated = AnuTranslator.translateString(messages[0].getMessageBody(), anu_lang, "auto");
+                       if (!bodyTranslated.isEmpty()) {
+                         messages[0].setMessageBody(bodyTranslated);
+                       }
+                     }
+                     //////////////////////////
+
                      return MessageSender.send(context, messages[0], thread, forceSms, () -> fragment.releaseOutgoingMessage(id));
                    }
 
@@ -2868,6 +2890,10 @@ public class ConversationActivity extends PassphraseRequiredActivity
 
                })
                .execute();
+  }
+
+  private void anuMessageSender(OutgoingTextMessage message){
+
   }
 
   private void showDefaultSmsPrompt() {

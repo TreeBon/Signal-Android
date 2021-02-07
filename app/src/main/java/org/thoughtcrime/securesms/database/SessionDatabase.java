@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 
 import org.signal.core.util.logging.Log;
-import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 import org.thoughtcrime.securesms.recipients.RecipientId;
 import org.thoughtcrime.securesms.util.SqlUtil;
 import org.whispersystems.libsignal.state.SessionRecord;
