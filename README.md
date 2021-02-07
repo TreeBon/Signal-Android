@@ -1,6 +1,6 @@
 # Signal Android with google-translator
 
-To translate click in the Chat-Options to "Translation Language" !!!!
+To translate click in the Chat-Options on "Translation Language" !!!!
 
 Signal is a messaging app for simple private communication with friends.
 
