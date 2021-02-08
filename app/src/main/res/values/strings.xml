@@ -2138,8 +2138,10 @@
     <string name="arrays__anulanguage_en">english</string>
     <string name="arrays__anulanguage_es">spanish</string>
     <string name="arrays__anulanguage_fr">french</string>
-    <string name="arrays__anulanguage_ge">german</string>
-    <string name="arrays__anulanguage_gr">greek</string>
+    <string name="arrays__anulanguage_de">german</string>
+    <string name="arrays__anulanguage_el">greek</string>
+    <string name="arrays__anulanguage_it">italien</string>
+
 
     <string name="arrays__settings_default">Settings default</string>
     <string name="arrays__enabled">Enabled</string>

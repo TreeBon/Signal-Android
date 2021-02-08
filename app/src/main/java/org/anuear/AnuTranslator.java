@@ -90,18 +90,18 @@ public class AnuTranslator {
         return new StringBuilder().append(text).append("\n\n").append(concatText).toString();
     }
 
-    public static String getLangFromNumber(int lang){
-        switch (lang){
-            case 10002: return "ar";
-            case 10003: return "en";
-            case 10004: return "fr";
-            case 10005: return "el";
-            case 10006: return "de";
-            case 10007: return "es";
-            default: return "none";
-
-        }
-    }
+//    public static String getLangFromNumber(int lang){
+//        switch (lang){
+//            case 10002: return "ar";
+//            case 10003: return "en";
+//            case 10004: return "fr";
+//            case 10005: return "el";
+//            case 10006: return "de";
+//            case 10007: return "es";
+//            default: return "none";
+//
+//        }
+//    }
 
 //    public void sendText(String text, int actualLangId,ArrayList<TLRPC.MessageEntity> entities,boolean notify, int scheduleDate){
 //        OkHttpClient client = new OkHttpClient();

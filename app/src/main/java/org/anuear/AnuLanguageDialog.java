@@ -63,8 +63,9 @@ public class AnuLanguageDialog extends AlertDialog {
       case "en": return 2;
       case "es": return 3;
       case "fr": return 4;
-      case "ge": return 5;
-      case "gr": return 6;
+      case "de": return 5;
+      case "el": return 6;
+      case "it": return 7;
       default: return 0;
     }
   }
@@ -74,8 +75,9 @@ public class AnuLanguageDialog extends AlertDialog {
       case 2: return "en";
       case 3: return "es";
       case 4: return "fr";
-      case 5: return "ge";
-      case 6: return "gr";
+      case 5: return "de";
+      case 6: return "el";
+      case 7: return "it";
       default: return null;
     }
   }

@@ -240,8 +240,9 @@
         <item>@string/arrays__anulanguage_en</item>
         <item>@string/arrays__anulanguage_es</item>
         <item>@string/arrays__anulanguage_fr</item>
-        <item>@string/arrays__anulanguage_ge</item>
-        <item>@string/arrays__anulanguage_gr</item>
+        <item>@string/arrays__anulanguage_de</item>
+        <item>@string/arrays__anulanguage_el</item>
+        <item>@string/arrays__anulanguage_it</item>
     </string-array>
 
   <string-array name="recipient_vibrate_entries">
